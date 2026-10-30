@@ -94,16 +94,65 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
           // Vùng hiển thị nội dung
           Expanded(
             child: _selectedIndex == 0
-                ? const Center(
-                    child: Text(
-                      'Trang chủ',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                ? LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      // Đo chiều rộng thực tế còn trống mà vùng nội dung được cấp
+                      final double availableWidth = constraints.maxWidth;
+
+                      return Column(
+                        children: [
+                          // Thanh trạng thái giúp đối chiếu MediaQuery và LayoutBuilder khi Demo
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(12),
+                            color: Colors.amber.shade100,
+                            child: Text(
+                              'Không gian khả dụng (LayoutBuilder): ${availableWidth.toInt()} px '
+                              '-> Bố cục: ListView (1 cột)',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: _buildListView(),
+                          ),
+                        ],
+                      );
+                    },
                   )
                 : _buildProfilePage(),
           ),
         ],
       ),
+    );
+  }
+
+  // Bố cục 1: Danh sách dọc (ListView) cho không gian khả dụng hẹp (< 500px)
+  Widget _buildListView() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(12),
+      itemCount: 8,
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.only(bottom: 10),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.blue.shade100,
+              child: Text('${index + 1}'),
+            ),
+            title: Text(
+              'Mục dữ liệu số ${index + 1}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: const Text('Hiển thị dạng danh sách dọc 1 cột (ListView)'),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {},
+          ),
+        );
+      },
     );
   }
 
