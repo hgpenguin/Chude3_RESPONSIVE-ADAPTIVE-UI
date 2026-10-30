@@ -1,21 +1,15 @@
-# Báo Cáo Chuyên Đề: Responsive & Adaptive UI trong Flutter
+# Chuyên Đề: Responsive & Adaptive UI trong Flutter
 
 **Học phần:** Lập trình đa nền tảng  
 **Giảng viên hướng dẫn (GVHD):** TS. Nguyễn Duy Nhật Viễn  
+**Sinh viên thực hiện:**  
+- **Nguyễn Thái Hoàng** — MSSV: 106230011  
+- **Lê Trương Uyển Nhi** — MSSV: 106230054  
 **Đơn vị:** Khoa Điện tử và Trí tuệ Nhân tạo — Trường Đại học Bách Khoa, Đại học Đà Nẵng  
 
 ---
 
-## 1. Thông tin nhóm & Bảng phân công công việc (WBS)
-
-| STT | Họ và tên | MSSV | Nội dung công việc | Commit GitHub | Tỷ lệ đóng góp |
-|:---:|:---|:---:|:---|:---|:---:|
-| 1 | **Nguyễn Thái Hoàng** | 106230011 | Tìm hiểu lý thuyết Responsive/Adaptive, Breakpoint; lập trình khung điều hướng thích ứng với MediaQuery; soạn báo cáo & slide thuyết trình. | Commit: main.dart (Scaffold, MediaQuery, Navigation), README.md | 50% |
-| 2 | **Lê Trương Uyển Nhi** | 106230054 | Tìm hiểu LayoutBuilder & nguyên tắc phương thức nhập liệu; lập trình vùng nội dung tự chuyển đổi ListView / GridView; kiểm thử & chụp kết quả demo. | Commit: main.dart (LayoutBuilder, ListView, GridView), /screenshots | 50% |
-
----
-
-## 2. Mục tiêu và Kiến trúc giải pháp
+## 1. Mục tiêu và Kiến trúc giải pháp
 
 Ứng dụng demo minh họa đầy đủ 2 cơ chế cốt lõi của giao diện đa nền tảng:
 1. **Adaptive Navigation (Toàn màn hình với MediaQuery):**
@@ -28,7 +22,7 @@
 
 ---
 
-## 3. Hướng dẫn cài đặt và chạy ứng dụng
+## 2. Hướng dẫn cài đặt và chạy ứng dụng
 
 ### Yêu cầu môi trường:
 - Flutter SDK (phiên bản 3.0 trở lên)
@@ -50,7 +44,7 @@ flutter run -d windows
 
 ---
 
-## 4. Kết quả thực nghiệm và Ảnh chụp màn hình
+## 3. Kết quả thực nghiệm và Ảnh chụp màn hình
 
 | Trường hợp 1: Màn hình hẹp (< 500px) | Trường hợp 2: Chuyển tiếp (500–599px) | Trường hợp 3: Màn hình rộng (≥ 600px) |
 |:---:|:---:|:---:|
@@ -59,7 +53,7 @@ flutter run -d windows
 
 ---
 
-## 5. Tài liệu tham khảo
+## 4. Tài liệu tham khảo
 - [1] Flutter Docs: *Creating responsive and adaptive apps*
 - [2] Flutter Docs: *Best practices for adaptive design*
 - [3] Flutter API: *MediaQuery class & LayoutBuilder class*
