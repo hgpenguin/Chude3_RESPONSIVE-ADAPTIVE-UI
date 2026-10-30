@@ -19,12 +19,12 @@
 
 Ứng dụng demo minh họa đầy đủ 2 cơ chế cốt lõi của giao diện đa nền tảng:
 1. **Adaptive Navigation (Toàn màn hình với MediaQuery):**
-   - Màn hình hẹp (< 600px): Sử dụng thanh điều hướng đáy BottomNavigationBar tối ưu cho thao tác chạm bằng ngón tay cái trên thiết bị di động.
-   - Màn hình rộng (≥ 600px): Chuyển sang thanh điều hướng dọc bên trái NavigationRail kết hợp VerticalDivider, phù hợp với chuột và không gian ngang lớn trên Tablet/Desktop.
+   - Màn hình hẹp (< 600px): Sử dụng thanh điều hướng đáy `BottomNavigationBar` tối ưu cho thao tác chạm bằng ngón tay cái trên thiết bị di động.
+   - Màn hình rộng (≥ 600px): Chuyển sang thanh điều hướng dọc bên trái `NavigationRail` kết hợp `VerticalDivider`, phù hợp với chuột và không gian ngang lớn trên Tablet/Desktop.
 2. **Responsive Content (Cục bộ theo không gian khả dụng với LayoutBuilder):**
-   - Đo chiều rộng thực tế constraints.maxWidth sau khi đã trừ hao 81px của NavigationRail.
-   - Không gian hẹp (< 500px): Hiển thị dạng danh sách dọc 1 cột (ListView.builder).
-   - Không gian rộng (≥ 500px): Hiển thị dạng lưới 2 cột (GridView.builder).
+   - Đo chiều rộng thực tế `constraints.maxWidth` sau khi đã trừ hao 81px của `NavigationRail`.
+   - Không gian hẹp (< 500px): Hiển thị dạng danh sách dọc 1 cột (`ListView.builder`).
+   - Không gian rộng (≥ 500px): Hiển thị dạng lưới 2 cột (`GridView.builder`).
 
 ---
 
@@ -35,19 +35,16 @@
 - Trình duyệt Google Chrome hoặc thiết bị ảo / Windows Desktop support
 
 ### Các bước chạy:
-`ash
-# 1. Điều hướng vào thư mục dự án
-cd ChuDe03_Fixed
-
-# 2. Cài đặt các gói phụ thuộc (nếu cần)
+```bash
+# 1. Cài đặt các gói phụ thuộc (nếu cần)
 flutter pub get
 
-# 3. Chạy ứng dụng trên trình duyệt Chrome (khuyên dùng để test co giãn dễ nhất)
+# 2. Chạy ứng dụng trên trình duyệt Chrome (khuyên dùng để test co giãn dễ nhất)
 flutter run -d chrome
 
 # Hoặc chạy trên môi trường Windows Desktop:
 flutter run -d windows
-`
+```
 
 > **Mẹo kiểm thử nhanh:** Trên Chrome, bạn chỉ cần mở rộng / thu nhỏ cửa sổ hoặc nhấn F12 bật *Device Toolbar* để thay đổi linh hoạt kích thước chiều rộng cửa sổ.
 
