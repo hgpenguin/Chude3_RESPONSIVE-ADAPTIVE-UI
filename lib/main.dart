@@ -34,6 +34,9 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
   // Ngưỡng Breakpoint chuẩn Material 3 (600px) phân tách Compact và Medium
   static const double kBreakpoint = 600.0;
 
+  // Ngưỡng chọn bố cục theo không gian khả dụng của vùng nội dung (500px)
+  static const double kContentBreakpoint = 500.0;
+
   @override
   Widget build(BuildContext context) {
     // Lấy chiều rộng toàn màn hình
@@ -98,6 +101,8 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
                     builder: (BuildContext context, BoxConstraints constraints) {
                       // Đo chiều rộng thực tế còn trống mà vùng nội dung được cấp
                       final double availableWidth = constraints.maxWidth;
+                      final bool isSingleColumn =
+                          availableWidth < kContentBreakpoint;
 
                       return Column(
                         children: [
@@ -108,7 +113,7 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
                             color: Colors.amber.shade100,
                             child: Text(
                               'Không gian khả dụng (LayoutBuilder): ${availableWidth.toInt()} px '
-                              '-> Bố cục: ListView (1 cột)',
+                              '-> Bố cục: ${isSingleColumn ? "ListView (1 cột)" : "GridView (2 cột)"}',
                               style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -116,8 +121,11 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
                             ),
                           ),
 
+                          // Chọn bố cục hiển thị dựa vào không gian khả dụng (Ngưỡng 500px)
                           Expanded(
-                            child: _buildListView(),
+                            child: isSingleColumn
+                                ? _buildListView() // Hẹp (< 500px) -> Danh sách 1 cột dọc
+                                : _buildGridView(), // Rộng (>= 500px) -> Lưới 2 cột
                           ),
                         ],
                       );
@@ -150,6 +158,39 @@ class _SimpleResponsiveDemoState extends State<SimpleResponsiveDemo> {
             subtitle: const Text('Hiển thị dạng danh sách dọc 1 cột (ListView)'),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {},
+          ),
+        );
+      },
+    );
+  }
+
+  // Bố cục 2: Lưới 2 cột (GridView) cho không gian khả dụng rộng (>= 500px)
+  Widget _buildGridView() {
+    return GridView.builder(
+      padding: const EdgeInsets.all(12),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // Chia thành 2 cột
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+        mainAxisExtent: 96, // Chiều cao cố định giúp không bị lỗi tràn chữ
+      ),
+      itemCount: 8,
+      itemBuilder: (context, index) {
+        return Card(
+          color: Colors.green.shade50,
+          child: Center(
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.green.shade200,
+                child: const Icon(Icons.grid_view, size: 20),
+              ),
+              title: Text(
+                'Mục dữ liệu số ${index + 1}',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: const Text('Hiển thị dạng lưới 2 cột (GridView)'),
+              onTap: () {},
+            ),
           ),
         );
       },
