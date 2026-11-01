@@ -1,4 +1,4 @@
-# Chuyên Đề: Responsive & Adaptive UI trong Flutter
+# Chủ đề: Responsive & Adaptive UI trong Flutter
 
 **Học phần:** Lập trình đa nền tảng  
 **Giảng viên hướng dẫn (GVHD):** TS. Nguyễn Duy Nhật Viễn  
